@@ -1,0 +1,27 @@
+{
+  "name": "New-eva",
+  "version": "2.0",
+  "description": "Improves the Nueva website.",
+  "background": { "scripts": ["background.js"] },
+  "web_accessible_resources" : ["dynamictag.js"],
+  "page_action" :
+  {
+    "default_icon" : "images/icon-19.png",
+    "default_title" : "New-eva",
+    "default_popup" : "popup.html"
+  },
+  "permissions" : [
+    "tabs",
+    "https://my.nuevaschool.org/*",
+    "http://my.nuevaschool.org/*"
+  ],
+  "icons" : {
+    "48" : "images/icon-48.png",
+    "128" : "images/icon-128.png"
+  },
+  "content_scripts": [{
+        "js": ["contentscript.js"],
+        "matches": ["https://my.nuevaschool.org/*", "http://my.nuevaschool.org/*"]
+  }],
+  "manifest_version": 2
+}
