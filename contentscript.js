@@ -42,6 +42,27 @@ var titlehash = {
 	'For class "9th Comp Sci - Computing in Everything 2013-2014.1".': 'Advanced Programming',
 };
 
+//Require sum.js
+var sum = require('lib/sum');
+
+//Make summarize function to request and summarize pages (code adapted from google manual)
+function summarize (url) {
+	var outertext = ""; //initialize outertext to pass out text
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+	xhr.onreadystatechange = function() {
+	  if (xhr.readyState == 4) {
+		var text = xhr.responseText;
+		text = (/<td class="blogPostBody">(.*?)<\/td>/.exec(text))[0]; //Get HTML from HW post
+		text = text.replace(/<(.*?)>/g, ""); //Strip HTML
+		text = sum({'corpus': text, 'nSentences': 3}); //Call sum.js to summarize
+		outertext = text;
+	  }
+	}
+	xhr.send();
+	return outertext;
+}
+
 //Process all elements
 var all = document.getElementsByTagName("*");
 var max = all.length; //save length to prevent NodeList funkiness
@@ -51,6 +72,7 @@ for (i = max-1; i > 0; i--) {
 		all[i].removeChild(all[i].firstChild); //Kill "due today"s
 		all[i].style.listStyleType = 'none'; //Remove bullet points
 		all[i].innerHTML = titlehash[all[i].firstChild.title] + ": " + all[i].innerHTML; //Add classname
+		all[i].firstChild.title = summarize(all[i].firstChild.title); //Replace title-text with assignment summary
 	}
 	//Kill browser warning, .hw_post, and .hw_remind
 	else if ((all[i].className == 'hw_post') || (all[i].className == 'hw_remind') || all[i].className == 'errorMessage') {
