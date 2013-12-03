@@ -46,13 +46,20 @@ var titlehash = {
 var all = document.getElementsByTagName("*");
 var max = all.length; //save length to prevent NodeList funkiness
 for (i = max-1; i > 0; i--) {
-	//Kill all .hw_post and .hw_remind (and browser message)
-	if ((all[i].className == 'hw_post') || (all[i].className == 'hw_remind') || (all[i].className == 'errorMessage')) {
-		all[i].parentNode.removeChild(all[i]);
+	//Handle homework assignments
+	if ((all[i].className == 'hw_due') || (all[i].className == 'hw_post') || (all[i].className == 'hw_remind')) {
+		if (all[i].className == 'hw_due') {
+			all[i].removeChild(all[i].firstChild); //Kill "due today"s
+			all[i].style.listStyleType = 'none'; //Remove bullet points
+			all[i].innerHTML = titlehash[all[i].firstChild.title] + ": " + all[i].innerHTML; //Add classname
+		} else {
+			//Kill all .hw_post and .hw_remind
+			all[i].parentNode.removeChild(all[i]);
+		}
 	}
-	//Kill "due today"s
-	else if (all[i].className == 'hw_due') {
-		all[i].removeChild(all[i].firstChild);
+	//Kill browser warning
+	else if (all[i].className == 'errorMessage') {
+		all[i].parentNode.removeChild(all[i]);
 	}
 	//Replace all non-crucial occurrences of "The Nueva School" with "Nueva"
 	else if (all[i].innerHTML.match(/(<[^>]*?>[^><]*?)The Nueva School([^><]*?<)/ig)) {
