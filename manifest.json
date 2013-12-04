@@ -3,7 +3,7 @@
   "version": "2.0",
   "description": "Improves the Nueva website.",
   "background": { "scripts": ["background.js"] },
-  "web_accessible_resources" : ["dynamictag.js"],
+  "web_accessible_resources" : ["dynamictag.js", "images/*.png"],
   "page_action" :
   {
     "default_icon" : "images/icon-19.png",
