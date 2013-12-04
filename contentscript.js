@@ -1,10 +1,18 @@
 //Inject dynamic.js (credit to StackOverflow user Rob W)
-var s = document.createElement('script');
-s.src = chrome.extension.getURL("dynamictag.js");
-s.onload = function() {
-    this.parentNode.removeChild(this);
+function inject (file) {
+	var s = document.createElement('script');
+	s.src = chrome.extension.getURL(file);
+	s.onload = function() {
+		this.parentNode.removeChild(this);
+	};
+	(document.head||document.documentElement).appendChild(s);
 };
-(document.head||document.documentElement).appendChild(s);
+inject("dynamictag.js"); //inject dynamic script tag
+//inject sum.js and dependencies
+/*inject("lib/sum_js/lib/porter-stemmer.js");
+inject("lib/sum_js/lib/underscore-1.2.3.js");
+inject("lib/sum_js/lib/underscore.string-2.0.0.js");
+inject("lib/sum_js/sum.js");*/
 //Done injecting
 
 //Remove logout timer bar (visual)
@@ -42,37 +50,17 @@ var titlehash = {
 	'For class "9th Comp Sci - Computing in Everything 2013-2014.1".': 'Advanced Programming',
 };
 
-//Require sum.js
-var sum = require('lib/sum');
-
-//Make summarize function to request and summarize pages (code adapted from google manual)
-function summarize (url) {
-	var outertext = ""; //initialize outertext to pass out text
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", url, true);
-	xhr.onreadystatechange = function() {
-	  if (xhr.readyState == 4) {
-		var text = xhr.responseText;
-		text = (/<td class="blogPostBody">(.*?)<\/td>/.exec(text))[0]; //Get HTML from HW post
-		text = text.replace(/<(.*?)>/g, ""); //Strip HTML
-		text = sum({'corpus': text, 'nSentences': 3}); //Call sum.js to summarize
-		outertext = text;
-	  }
-	}
-	xhr.send();
-	return outertext;
-}
-
 //Process all elements
 var all = document.getElementsByTagName("*");
 var max = all.length; //save length to prevent NodeList funkiness
-for (i = max-1; i > 0; i--) {
+for (var i = max-1; i > 0; i--) {
 	//Handle homework assignments
 	if ((all[i].className == 'hw_due') ) {
 		all[i].removeChild(all[i].firstChild); //Kill "due today"s
+		var title = titlehash[all[i].firstChild.title]; //Save title-text for reference (firstChild problems), hash lookup for performance
 		all[i].style.listStyleType = 'none'; //Remove bullet points
-		all[i].innerHTML = titlehash[all[i].firstChild.title] + ": " + all[i].innerHTML; //Add classname
-		all[i].firstChild.title = summarize(all[i].firstChild.title); //Replace title-text with assignment summary
+		all[i].firstChild.title = title; //Set title-text to classname 
+		all[i].innerHTML = title + ": " + all[i].innerHTML; //Add classname
 	}
 	//Kill browser warning, .hw_post, and .hw_remind
 	else if ((all[i].className == 'hw_post') || (all[i].className == 'hw_remind') || all[i].className == 'errorMessage') {
@@ -89,7 +77,7 @@ var noschool = document.getElementsByClassName("calendarNoSchool");
 
 for (var i = 0; i < noschool.length; i++) {
 	var img = document.createElement('img')
-	img.setAttribute("src", "http://fc02.deviantart.net/fs71/f/2012/025/b/b/no_school_by_wilpah-d4nn1c2.png");
+	img.setAttribute("src", "https://fc02.deviantart.net/fs71/f/2012/025/b/b/no_school_by_wilpah-d4nn1c2.png");
 	img.style.width = "95%";
 	img.style.display = "block";
     img.style.margin = "0 auto";
