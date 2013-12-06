@@ -34,6 +34,7 @@ var titlehash = {
 	'For class "9th Science and Society 2013-2014.1".': 'Science and Society',
 	'For class "9th Science Liquid 2013-2014.1".': 'Science',
 	'For class "9th Science of Mind Liquid 2013-2014.1".': 'Science of Mind',
+	'For class "9th Spanish Inca 2013-2014.1".': 'Spanish',
 	//educated guesses
 	'For class "9th DT Solid 2013-2014.1".': 'Design Thinking',
 	'For class "9th DT Gas 2013-2014.1".': 'Design Thinking',
@@ -61,14 +62,36 @@ for (var i = max-1; i > 0; i--) {
 	//Handle homework assignments
 	else if (all[i].className == 'hw_due') {
 		all[i].removeChild(all[i].firstChild); //Kill "due today"s
+		//handle comment
+		var comment = /\s+Comment: (.*)$/.exec(all[i].firstChild.title);
+		all[i].firstChild.title = all[i].firstChild.title.replace(/\s+Comment: .*$/, "");
 		var title = titlehash[all[i].firstChild.title]; //Save title-text for reference (firstChild problems), hash lookup for performance
+		if (comment) {
+			comment = comment[1];
+			all[i].firstChild.title = comment; //Set title-text to comment 
+			all[i].firstChild.innerHTML = '<span style="color: red">' + title + "</span>: " + all[i].firstChild.innerHTML + '<span style="color: green"> Comment: ' + comment + '</span>'; //Add classname & comment
+		} else {
+			all[i].firstChild.title = all[i].firstChild.title; //Set title-text to classname 
+			all[i].firstChild.innerHTML = '<span style="color: red">' + title + "</span>: " + all[i].firstChild.innerHTML; //Add classname
+		}
 		all[i].style.listStyleType = 'none'; //Remove bullet points
-		all[i].firstChild.title = title; //Set title-text to classname 
-		all[i].innerHTML = title + ": " + all[i].innerHTML; //Add classname
-	} else if (all[i].className == "calendarNoSchool" || all[i].className == "calendarToday") {
+	} else if ((all[i].className == "calendarDay" && (all[i] == all[i].parentNode.firstChild || all[i] == all[i].parentNode.lastChild)) || all[i].className == "calendarNoSchool" || all[i].className == "calendarToday") {
+		// || (all[i].className == "calendarDay" && (all[i] == all[i].parentNode.firstChild || all[i] == all[i].parentNode.lastChild))
+		var filename = all[i].className; //save filename for special case handling
+		
+		//handle sundays and saturdays
+		//if ((localStorage["weekend"] == "0" && all[i].className == "calendarToday") || (localStorage["weekend"] == "1" && all[i].className == "calendarDay")) {
+		if (all[i].className == "calendarDay") {
+			if (all[i] == all[i].parentNode.firstChild) {
+				filename = "calendarSunday";
+			} else {
+				filename = "calendarSaturday";
+			}
+		}
+		
 		//Work some magic on certain days (add pictures)
 		var img = document.createElement('img')
-		img.setAttribute("src", chrome.extension.getURL("images/" + all[i].className + ".png"));
+		img.setAttribute("src", chrome.extension.getURL("images/" + filename + ".png"));
 		img.style.width = "95%";
 		img.style.display = "block"; //center
 		img.style.margin = "0 auto"; //center
