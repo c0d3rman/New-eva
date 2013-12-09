@@ -46,9 +46,13 @@ var titlehash = {
 	'For class "9th Science of Mind Gas 2013-2014.1".': 'Science of Mind',
 	'For class "9th Science of Mind Plasma 2013-2014.1".': 'Science of Mind',
 	'For class "9th English Locke 2013-2014.1".': 'English',
+	'For class "9th English De La Cruz 2013-2014.1".': 'English',
 	'For class "9th History Machiavelli 2013-2014.1".': 'History',
 	'For class "9th Math Turing 2013-2014.1".': 'Math',
+	'For class "9th Math Ramanujan 2013-2014.1".': 'Math',
 	'For class "9th Comp Sci - Computing in Everything 2013-2014.1".': 'Advanced Programming',
+	'For class "9th Spanish Azteca 2013-2014.1".': 'Spanish',
+	'For class "9th Spanish Maya 2013-2014.1".': 'Spanish',
 };
 
 //Process all elements (necessary on all pages for "The Nueva School" regex without reloading HTML)
@@ -71,7 +75,7 @@ for (var i = max-1; i > 0; i--) {
 			all[i].firstChild.title = comment; //Set title-text to comment 
 			all[i].firstChild.innerHTML = '<span style="color: red">' + title + "</span>: " + all[i].firstChild.innerHTML + '<span style="color: green"> Comment: ' + comment + '</span>'; //Add classname & comment
 		} else {
-			all[i].firstChild.title = all[i].firstChild.title; //Set title-text to classname 
+			all[i].firstChild.title = title; //Set title-text to classname 
 			all[i].firstChild.innerHTML = '<span style="color: red">' + title + "</span>: " + all[i].firstChild.innerHTML; //Add classname
 		}
 		all[i].style.listStyleType = 'none'; //Remove bullet points
