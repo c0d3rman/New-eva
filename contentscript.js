@@ -51,7 +51,7 @@ var titlehash = {
 	'For class "9th Comp Sci - Computing in Everything 2013-2014.1".': 'Advanced Programming',
 };
 
-//Process all elements
+//Process all elements (necessary on all pages for "The Nueva School" regex without reloading HTML)
 var all = document.getElementsByTagName("*");
 var max = all.length; //save length to prevent NodeList funkiness
 for (var i = max-1; i > 0; i--) {
@@ -103,3 +103,26 @@ for (var i = max-1; i > 0; i--) {
 		all[i].innerHTML = all[i].innerHTML.replace(/(<[^>]*?>[^><]*?)The Nueva School([^><]*?<)/ig, "$1Nueva$2");
 	}
 }
+
+//create sidebox with hw for tomorrow
+var sidebox = document.createElement('div');
+var c = document.createElement('div');
+sidebox.innerHTML = document.getElementsByClassName('calendarToday')[0].nextSibling.innerHTML; //get tomorrow's assignments
+sidebox.firstChild.firstChild.innerText = "Tomorrow's Homework (" + sidebox.firstChild.firstChild.innerText + ")"; //set title
+//style sidebox
+sidebox.style.position = "fixed";
+sidebox.style.padding = "10 5";
+sidebox.style.zIndex = 1000;
+sidebox.style.width = 100;
+sidebox.style.marginTop = 100;
+sidebox.style.marginRight = "10px";
+//sidebox.style.float = "right";
+sidebox.style.marginLeft = (window.innerWidth - 126);
+sidebox.style.border = "3px solid black";
+sidebox.style.backgroundColor = "#CCCCCC";
+document.body.insertBefore(sidebox, document.body.firstChild); //add to beginning of page
+
+//set onResize to keep sidebox on right side
+window.onresize = function(){
+	sidebox.style.marginLeft = (window.innerWidth - 126);
+};
