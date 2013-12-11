@@ -66,6 +66,7 @@ for (var i = max-1; i > 0; i--) {
 	//Handle homework assignments
 	else if (all[i].className == 'hw_due') {
 		all[i].removeChild(all[i].firstChild); //Kill "due today"s
+		all[i].firstChild.setAttribute("target", "_blank"); //Make links open in new tab
 		//handle comment
 		var comment = /\s+Comment: (.*)$/.exec(all[i].firstChild.title);
 		all[i].firstChild.title = all[i].firstChild.title.replace(/\s+Comment: .*$/, "");
@@ -79,7 +80,7 @@ for (var i = max-1; i > 0; i--) {
 			all[i].firstChild.innerHTML = '<span style="color: red">' + title + "</span>: " + all[i].firstChild.innerHTML; //Add classname
 		}
 		all[i].style.listStyleType = 'none'; //Remove bullet points
-	} else if ((all[i].className == "calendarDay" && (all[i] == all[i].parentNode.firstChild || all[i] == all[i].parentNode.lastChild)) || all[i].className == "calendarNoSchool" || all[i].className == "calendarToday") {
+	} else if (document.title == "Calendar" && ((all[i].className == "calendarDay" && (all[i] == all[i].parentNode.firstChild || all[i] == all[i].parentNode.lastChild)) || all[i].className == "calendarNoSchool" || all[i].className == "calendarToday")) {
 		// || (all[i].className == "calendarDay" && (all[i] == all[i].parentNode.firstChild || all[i] == all[i].parentNode.lastChild))
 		var filename = all[i].className; //save filename for special case handling
 		
@@ -108,10 +109,22 @@ for (var i = max-1; i > 0; i--) {
 	}
 }
 
+//Add footer text
+document.getElementById('footer').firstChild.style.width = 'auto';
+document.getElementById('footer').firstChild.innerHTML += ' &nbsp; &nbsp;New-eva extension by Yoni Lerner';
+
+//Check if current tab is homework calendar
+/*if (document.getElementsByClassName('subnavTitle')[0].innerText == " Homework Calendar     Print") {
+	localStorage["homework"] = document.getElementsByClassName('calendarToday')[0].nextSibling.innerHTML; //get tomorrow's assignments
+	localStorage["date"] = Date.now();
+}*/
+
 //create sidebox with hw for tomorrow
 var sidebox = document.createElement('div');
 var c = document.createElement('div');
-sidebox.innerHTML = document.getElementsByClassName('calendarToday')[0].nextSibling.innerHTML; //get tomorrow's assignments
+//sidebox.innerHTML = "<span style='font: 10px gray'>" + Math.floor((Date.now() - localStorage['date']) / 60000) + " minutes since last updated</span>"; //Display time since last updated
+//sidebox.innerHTML += localStorage["homework"]; //get homework from memory
+sidebox.innerHTML = document.getElementsByClassName('calendarToday')[0].nextSibling.innerHTML;
 sidebox.firstChild.firstChild.innerText = "Tomorrow's Homework (" + sidebox.firstChild.firstChild.innerText + ")"; //set title
 //style sidebox
 sidebox.style.position = "fixed";
@@ -125,6 +138,17 @@ sidebox.style.marginLeft = (window.innerWidth - 126);
 sidebox.style.border = "3px solid black";
 sidebox.style.backgroundColor = "#CCCCCC";
 document.body.insertBefore(sidebox, document.body.firstChild); //add to beginning of page
+
+//Change month names to images
+/*var monthnames = document.getElementsByTagName('font a');
+for (var i = 0; i < monthnames.length; i++) {
+	var img = document.createElement('img');
+	img.setAttribute("src", chrome.extension.getURL("images/" + monthnames.innerHTML + ".png"));
+	monthnames.innerHTML = '';
+	img.style.height = "40px";
+//	img.style.display = "block"; //center
+	monthnames[i].appendChild(img);
+}*/
 
 //set onResize to keep sidebox on right side
 window.onresize = function(){
