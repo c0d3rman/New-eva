@@ -25,7 +25,10 @@ var titlehash = {
 	'For class "9th CESL".': 'CESL',
 	'For class "9th Comp Sci - Elegant Logic 2013-2014.1".': 'Advanced Programming',
 	'For class "9th DT Liquid 2013-2014.1".': 'Design Thinking',
+	'For class "9th Service and Design Engineering Plasma 2013-2014.1".': 'Design Engineering',
 	'For class "9th English Baldwin 2013-2014.1".': 'English',
+	'For class "9th English Euripides 2013-2014.1".': 'English',
+	'For class "9th Robotics FRC Team 2013-2014.1 Blog".': 'Robotics',
 	'For class "9th History Rousseau 2013-2014.1".': 'History',
 	'For class "9th Math Khayyam 2013-2014.1".': 'Math',
 	'For class "9th QUEST - All Grade 2013-2014.1".': 'Quest',
@@ -55,6 +58,14 @@ var titlehash = {
 	'For class "9th Spanish Maya 2013-2014.1".': 'Spanish',
 };
 
+//Function to resolve 2013-2014.1 or 2012-2013.2 issue
+var titlehasher = function (string) {
+	string = string.replace(/\d{4}-\d{4}\.\d/, '2013-2014.1');
+	console.log(string);
+	return titlehash[string];
+}
+
+
 //Process all elements (necessary on all pages for "The Nueva School" regex without reloading HTML)
 var all = document.getElementsByTagName("*");
 var max = all.length; //save length to prevent NodeList funkiness
@@ -70,7 +81,7 @@ for (var i = max-1; i > 0; i--) {
 		//handle comment
 		var comment = /\s+Comment: (.*)$/.exec(all[i].firstChild.title);
 		all[i].firstChild.title = all[i].firstChild.title.replace(/\s+Comment: .*$/, "");
-		var title = titlehash[all[i].firstChild.title]; //Save title-text for reference (firstChild problems), hash lookup for performance
+		var title = titlehasher(all[i].firstChild.title); //Save title-text for reference (firstChild problems), hash lookup for performance
 		if (comment) {
 			comment = comment[1];
 			all[i].firstChild.title = comment; //Set title-text to comment 
