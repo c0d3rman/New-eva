@@ -19,6 +19,8 @@ function save_options() {
 
 	var weekendchecked = weekend.children[selectedIndex].value;
 	localStorage["weekend"] = weekendchecked;
+	
+	localStorage["refreshPeriod"] = document.getElementById('refresh').value;
 
 	// Update status to let user know options were saved.
 	var status = document.getElementById("status");

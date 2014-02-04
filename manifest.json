@@ -24,5 +24,9 @@
         "js": ["contentscript.js"],
         "matches": ["https://my.nuevaschool.org/*", "http://my.nuevaschool.org/*"]
   }],
+  "background": {
+  	"scripts": ["background.js"],
+  	"persistent": false
+  },
   "manifest_version": 2
 }

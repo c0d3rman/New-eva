@@ -6,21 +6,12 @@ function checkForValidUrl(tabId, changeInfo, tab) {
 
 chrome.tabs.onUpdated.addListener(checkForValidUrl);
 
-//var go = true;
+chrome.alarms.create("Refresh Nueva Page", {"periodInMinutes": localStorage['refreshPeriod'] || 5});
 
-function stayLoggedIn(timeout){
-//	if (go) {
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET", 'https://my.nuevaschool.org/', true);
-		/*xhr.addEventListener("load", function(e) {
-			if (xhr.responseText.match(/The Nueva School Home/)) {
-				console.log(xhr.responseText);
-				go = false;
-			}
-		}, false)*/
-		xhr.send();
-		setTimeout(stayLoggedIn, timeout, timeout);
-//	}
+function stayLoggedIn(){
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", 'https://my.nuevaschool.org/', false);
+	xhr.send();
 }
 
-stayLoggedIn(90000);
+chrome.alarms.onAlarm.addListener(stayLoggedIn);
