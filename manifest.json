@@ -1,6 +1,6 @@
 {
   "name": "New-eva",
-  "version": "2.2",
+  "version": "2.3",
   "description": "Improves the Nueva website.",
   "background": { "scripts": ["background.js"] },
   "web_accessible_resources" : ["dynamictag.js", "images/*.png"],

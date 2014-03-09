@@ -23,7 +23,8 @@ parent.parentElement.removeChild(parent);
 var titlehash = {
 	//verified
 	'For class "9th CESL".': 'CESL',
-	'For class "9th Comp Sci - Elegant Logic 2013-2014.1".': 'Advanced Programming',
+	'For class "9th Comp Sci - Elegant Logic 2013-2014.1".': 'Programming',
+	'For class "9th Comp Sci - Computer Science and Programming 2013-2014.1".': 'Programming',
 	'For class "9th DT Liquid 2013-2014.1".': 'Design Thinking',
 	'For class "9th Service and Design Engineering Plasma 2013-2014.1".': 'Design Engineering',
 	'For class "9th English Baldwin 2013-2014.1".': 'English',
@@ -40,7 +41,7 @@ var titlehash = {
 	'For class "9th Science of Mind Plasma 2013-2014.1".': 'Science of Mind',
 	'For class "9th Science of Mind Liquid 2013-2014.1".': 'Science of Mind',
 	'For class "9th Spanish Inca 2013-2014.1".': 'Spanish',
-		'For class "9th Spanish Azteca 2013-2014.1".': 'Spanish',
+	'For class "9th Spanish Azteca 2013-2014.1".': 'Spanish',
 	//educated guesses
 	'For class "9th DT Solid 2013-2014.1".': 'Design Thinking',
 	'For class "9th DT Gas 2013-2014.1".': 'Design Thinking',
@@ -61,7 +62,7 @@ var titlehash = {
 	'For class "9th Math Turing 2013-2014.1".': 'Math',
 	'For class "9th Math Ramanujan 2013-2014.1".': 'Math',
 	'For class "9th Math Noether 2013-2014.1".': 'Math',
-	'For class "9th Comp Sci - Computing in Everything 2013-2014.1".': 'Advanced Programming',
+	'For class "9th Comp Sci - Computing in Everything 2013-2014.1".': 'Programming',
 	'For class "9th Spanish Maya 2013-2014.1".': 'Spanish',
 };
 
