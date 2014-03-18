@@ -1,37 +1,46 @@
 {
-  "name": "New-eva",
-  "version": "2.3",
-  "description": "Improves the Nueva website.",
-  "background": { "scripts": ["background.js"] },
-  "web_accessible_resources" : ["dynamictag.js", "images/*.png"],
-  "options_page": "options.html",
-  "page_action" :
-  {
-    "default_icon" : "images/icon-19.png",
-    "default_title" : "New-eva",
-    "default_popup" : "popup.html"
-  },
-  "permissions" : [
-    "tabs",
-    "https://my.nuevaschool.org/*",
-    "http://my.nuevaschool.org/*",
-    "http://txt.do/",
-    "http://textuploader.com/",
-    "alarms",
-    "storage",
-    "background"
-  ],
-  "icons" : {
-    "48" : "images/icon-48.png",
-    "128" : "images/icon-128.png"
-  },
-  "content_scripts": [{
-        "js": ["contentscript.js"],
-        "matches": ["https://my.nuevaschool.org/*", "http://my.nuevaschool.org/*"]
-  }],
-  "background": {
-  	"scripts": ["background.js"],
-  	"persistent": false
-  },
-  "manifest_version": 2
+	"name": "New-eva",
+	"version": "3.0.0",
+	"manifest_version": 2,
+	"description": "New-eva improves the Nueva website, stopping annoying login timeouts and prettyfing pages.",
+	"author": "Yoni Lerner",
+	"icons": {
+		"16": "icons/icon16.png",
+		"48": "icons/icon48.png",
+		"128": "icons/icon128.png"
+	},
+	"default_locale": "en",
+	"background": {
+		"scripts": [
+			"js/jquery/jquery.min.js",
+			"src/bg/background.js"
+		],
+		"persistent": false
+	},
+	"options_page": "src/options_custom/index.html",
+	"page_action": {
+		"default_icon": "icons/icon19.png",
+		"default_title": "New-eva",
+		"default_popup": "src/page_action/page_action.html"
+	},
+	"content_scripts": [{
+		"js": [
+			"js/jquery/jquery.min.js",
+			"src/content_script/static.js",
+			"src/content_script/contentscript.js",
+			"src/content_script/sidebox.js"
+		],
+		"matches": [
+			"https://my.nuevaschool.org/*",
+    		"http://my.nuevaschool.org/*"
+		]
+	}],
+	"web_accessible_resources" : ["src/content_script/dynamictag.js", "js/jquery/*", "images/*.png"],
+	"permissions": [
+		"https://my.nuevaschool.org/*",
+		"http://my.nuevaschool.org/*",
+		"tabs",
+		"storage",
+		"alarms"
+	]
 }

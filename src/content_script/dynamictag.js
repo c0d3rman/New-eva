@@ -1,7 +1,8 @@
 //Define unoverridable "countdown" function to kill the page's countdown
-Object.defineProperty(window, 'countdown', {
-    value: function(){}
-});
+//Object.defineProperty(window, 'countdown', {
+//    value: function(){}
+//});
+1;
 
 //Make summarize function to request and summarize pages (code adapted from google manual)
 /*function summarize (url) {
