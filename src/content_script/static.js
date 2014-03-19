@@ -1,14 +1,9 @@
-//Inject dynamictag.js (credit to StackOverflow user Rob W)
-function inject (file) {
-	var s = document.createElement('script');
-	s.src = chrome.extension.getURL(file);
-	s.onload = function() {
-		this.parentNode.removeChild(this);
-	};
-	(document.head||document.documentElement).appendChild(s);
-};
-inject("src/content_script/dynamictag.js"); //inject dynamic script tag
+//stop countdown
+var id = window.setTimeout(function() {}, 0);
 
+while (id--) {
+    window.clearTimeout(id);
+}
 
 //make logo go to my.nuevaschool.org
 $('#mastLeft').children(':first').attr('href', 'https://my.nuevaschool.org/');

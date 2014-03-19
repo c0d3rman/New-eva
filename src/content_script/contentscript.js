@@ -1,3 +1,25 @@
+//do settings-dependent stuff
+chrome.runtime.sendMessage({method: "getLocalStorage"}, function(response) {
+	var settings = response.localStorage;
+	
+	if (settings.calendarSunday) {
+		$('.calendarDay:first-child')
+			.append(img.clone().attr("src", chrome.extension.getURL("images/calendarSunday.png")));
+	}
+	if (settings.calendarSaturday) {
+		$('.calendarDay:last-child')
+			.append(img.clone().attr("src", chrome.extension.getURL("images/calendarSaturday.png")));
+	}
+	if (settings.calendarNoSchool) {
+		$('.calendarNoSchool')
+			.append(img.clone().attr("src", chrome.extension.getURL("images/calendarNoSchool.png")));
+	}
+	if (settings.calendarToday) {
+		$('.calendarToday')
+			.append(img.clone().attr("src", chrome.extension.getURL("images/calendarToday.png")));
+	}
+});
+
 //Create hash of title-text -> class name
 var titlehash = {
 	//verified
@@ -75,15 +97,6 @@ var img = $(document.createElement('img'))
 	.css("width", "95%")
 	.css("display", "block") //center
 	.css("margin", "0 auto"); //center
-
-$('.calendarDay:first-child')
-	.append(img.clone().attr("src", chrome.extension.getURL("images/calendarSunday.png")));
-$('.calendarDay:last-child')
-	.append(img.clone().attr("src", chrome.extension.getURL("images/calendarSaturday.png")));
-$('.calendarNoSchool')
-	.append(img.clone().attr("src", chrome.extension.getURL("images/calendarNoSchool.png")));
-$('.calendarToday')
-	.append(img.clone().attr("src", chrome.extension.getURL("images/calendarToday.png")));
 
 /*
 //Process all elements
