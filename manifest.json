@@ -1,6 +1,6 @@
 {
 	"name": "New-eva",
-	"version": "3.1.1",
+	"version": "3.2.0",
 	"manifest_version": 2,
 	"description": "New-eva improves the Nueva website, stopping annoying login timeouts and prettyfing pages.",
 	"author": "Yoni Lerner",

@@ -6,6 +6,10 @@ var settings = new Store("settings", {
 	"calendarToday": true,
 	"calendarNoSchool": true,
 	"sidebox": false,
+	"bgr": true,
+	"bgrtime": 30,
+	"thermo": true,
+	"logo": true
 });
 
 //example of using a message handler from the inject scripts
@@ -30,14 +34,19 @@ chrome.tabs.onUpdated.addListener(checkForValidUrl);
 
 
 // Auto Refresh
-chrome.alarms.create("Refresh Nueva Page", {"periodInMinutes": 5});
+if (settings.bgr) {
+	chrome.alarms.create("Refresh Nueva Page", {"delayInMinutes": settings.bgrtime});
+}
 function stayLoggedIn(){
-	$.ajax('https://my.nuevaschool.org/')
-	.done(function() {
-		console.log("Auto refreshed at " + Date());
-	})
-	.fail(function() {
-		console.log("ERROR: Auto refresh failed at " + Date());
-	});
+	if (settings.bgr) {
+		$.ajax('https://my.nuevaschool.org/')
+		.done(function() {
+			console.log("Auto refreshed at " + Date());
+			chrome.alarms.create("Refresh Nueva Page", {"delayInMinutes": settings.bgrtime});
+		})
+		.fail(function() {
+			console.log("ERROR: Auto refresh failed at " + Date());
+		});
+	}
 }
 chrome.alarms.onAlarm.addListener(stayLoggedIn);
