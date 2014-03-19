@@ -31,6 +31,13 @@ this.manifest = {
 			"type": "checkbox",
 			"label": "No school days"
 		},
+		{
+			"tab": "Visuals",
+			"group": "Sidebox",
+			"name": "sidebox",
+			"type": "checkbox",
+			"label": "Enable homework sidebox (not recommended)"
+		}
 		/*{
 			"tab": "Details",
 			"group": "Sound",

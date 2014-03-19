@@ -4,7 +4,8 @@ var settings = new Store("settings", {
 	"calendarSunday": true,
 	"calendarSaturday": true,
 	"calendarToday": true,
-	"calendarNoSchool": true
+	"calendarNoSchool": true,
+	"sidebox": false,
 });
 
 //example of using a message handler from the inject scripts
