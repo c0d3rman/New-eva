@@ -9,10 +9,11 @@ var settings = new Store("settings", {
 	"bgr": true,
 	"bgrtime": 30,
 	"thermo": true,
-	"logo": true
+	"logo": true,
+	"hw_due": true
 });
 
-//example of using a message handler from the inject scripts
+//Settings dispenser
 chrome.extension.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		if (request.method == "getLocalStorage") {
@@ -33,20 +34,35 @@ function checkForValidUrl(tabId, changeInfo, tab) {
 chrome.tabs.onUpdated.addListener(checkForValidUrl);
 
 
-// Auto Refresh
-if (settings.bgr) {
-	chrome.alarms.create("Refresh Nueva Page", {"delayInMinutes": settings.bgrtime});
+// Background Refresh
+chrome.alarms.create("Background Refresh", {"periodInMinutes": settings.get('bgrtime')});
+
+var messageAllTabs = function (message) {
+	chrome.tabs.query({}, function(tabs) {
+		for (var i = 0; i < tabs.length; ++i) {
+			chrome.tabs.sendMessage(tabs[i].id, message);
+		}
+	});
 }
-function stayLoggedIn(){
-	if (settings.bgr) {
-		$.ajax('https://my.nuevaschool.org/')
-		.done(function() {
-			console.log("Auto refreshed at " + Date());
-			chrome.alarms.create("Refresh Nueva Page", {"delayInMinutes": settings.bgrtime});
-		})
-		.fail(function() {
-			console.log("ERROR: Auto refresh failed at " + Date());
-		});
+
+function stayLoggedIn(alarm){
+	if (alarm.name == "Background Refresh" && settings.get('bgr')) {
+		//Send start message
+		messageAllTabs({method: "Background Refresh", type: "Initiate"});
+		//Ping the Nueva School
+		try {
+			$.ajax('https://my.nuevaschool.org/')
+			.done(function() {
+				messageAllTabs({method: "Background Refresh", type: "Success"});
+				console.log("Auto refreshed at " + Date());
+			})
+			.fail(function() {
+				messageAllTabs({method: "Background Refresh", type: "Failure"});
+				console.log("ERROR: Auto refresh failed at " + Date());
+			});
+		} catch (e) {
+				console.log("because of: " + e.message);
+		}
 	}
 }
 chrome.alarms.onAlarm.addListener(stayLoggedIn);

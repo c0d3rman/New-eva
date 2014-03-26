@@ -12,6 +12,13 @@ this.manifest = {
 		},
 		{
 			"tab": "Appearance",
+			"group": "General Fixes",
+			"name": "hw_due",
+			"type": "checkbox",
+			"label": "Make assignments prettier"
+		},
+		{
+			"tab": "Appearance",
 			"group": "Pictures",
 			"name": "calendarSaturday",
 			"type": "checkbox",
@@ -86,6 +93,8 @@ this.manifest = {
 			"step": 5,
 			"display": true,
 			"displayModifier": function (value) {
+				chrome.alarms.clear("Background Refresh");
+				chrome.alarms.create("Background Refresh", {"delayInMinutes": 1, "periodInMinutes": value});
 				return value + " minutes";
 			}
 		}

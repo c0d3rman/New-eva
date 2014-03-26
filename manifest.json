@@ -1,6 +1,6 @@
 {
 	"name": "New-eva",
-	"version": "3.2.0",
+	"version": "3.3.0",
 	"manifest_version": 2,
 	"description": "New-eva improves the Nueva website, stopping annoying login timeouts and prettyfing pages.",
 	"author": "Yoni Lerner",
@@ -26,20 +26,24 @@
 	},
 	"content_scripts": [{
 		"js": [
+			"src/content_script/autorefresh.js",
 			"js/jquery/jquery.min.js",
-			"src/content_script/static.js",
-			"src/content_script/contentscript.js",
-			"src/content_script/sidebox.js"
+			"src/content_script/global.js",
+			"src/content_script/homeworkcalendar.js",
+			"src/content_script/sidebox.js",
+			"src/content_script/bgrvisual.js"
 		],
 		"matches": [
 			"https://my.nuevaschool.org/*",
     		"http://my.nuevaschool.org/*"
 		]
 	}],
-	"web_accessible_resources" : ["src/content_script/dynamictag.js", "js/jquery/*", "images/*.png"],
+	"web_accessible_resources" : ["js/jquery/*", "images/*.png", "/images/loading.gif"],
 	"permissions": [
 		"https://my.nuevaschool.org/*",
 		"http://my.nuevaschool.org/*",
+		"https://nuevaschool.org/*",
+		"http://nuevaschool.org/*",
 		"tabs",
 		"storage",
 		"alarms"
