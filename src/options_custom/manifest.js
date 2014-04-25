@@ -13,9 +13,30 @@ this.manifest = {
 		{
 			"tab": "Appearance",
 			"group": "General Fixes",
+			"name": "calendar",
+			"type": "checkbox",
+			"label": "Enable features on calendars except the homework calendar"
+		},
+		{
+			"tab": "Assignments",
+			"group": "Visuals",
 			"name": "hw_due",
 			"type": "checkbox",
 			"label": "Make assignments prettier"
+		},
+		{
+			"tab": "Assignments",
+			"group": "Other Assignments",
+			"name": "hw_remind",
+			"type": "checkbox",
+			"label": "Show homework reminders (yellow)"
+		},
+		{
+			"tab": "Assignments",
+			"group": "Other Assignments",
+			"name": "hw_post",
+			"type": "checkbox",
+			"label": "Show homework postings (green)"
 		},
 		{
 			"tab": "Appearance",

@@ -1,4 +1,4 @@
-if ($(".subNavTitle:contains(Homework Calendar)").length) {
+if ($(".subNavTitle:contains(Homework Calendar)").length || (localStorage.calendar == "true" && $(".subNavTitle:contains(Calendar)").length)) {
 	//Apply unicorn powder to assignments
 	if (localStorage.hw_due == "true") {
 		//Create hash of title-text -> class name
@@ -55,7 +55,7 @@ if ($(".subNavTitle:contains(Homework Calendar)").length) {
 		}
 
 		//Deal with assignments
-		var hw_due = $('.hw_due');
+		var hw_due = $('.hw_due,.hw_remind,.hw_post');
 		hw_due.children("em").remove(); //Kill "due today"s
 		hw_due.children("a").attr("target", "_blank"); //Make links open in new tab
 		hw_due.css('list-style-type', 'none'); //Remove bullet points
@@ -71,6 +71,8 @@ if ($(".subNavTitle:contains(Homework Calendar)").length) {
 				$(this).children(":first").html('<span style="color: red">' + title + "</span>: " + $(this).children(":first").html()); //Add attr('class')
 			}
 		});
+		$('.hw_remind').css('background-color', 'rgba(255,255,0,0.2)');
+		$('.hw_post').css('background-color', 'rgba(0,255,0,0.2)');
 	}
 
 
@@ -96,7 +98,13 @@ if ($(".subNavTitle:contains(Homework Calendar)").length) {
 		$('.calendarToday')
 			.append(img.clone().attr("src", chrome.extension.getURL("images/calendarToday.png")));
 	}
-
-	//Kill postings (green) and reminders (yellow)
-	$(".hw_post,.hw_remind").remove();
+	
+	//kill reminders (yellow)
+	if (localStorage.hw_remind != "true") {
+		$(".hw_remind").remove();
+	}
+	//Kill postings (green)
+	if (localStorage.hw_post != "true") {
+		$(".hw_post").remove();
+	}
 }
