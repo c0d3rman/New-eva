@@ -1,31 +1,35 @@
-//fetch settings and dump them into localStorage
-chrome.runtime.sendMessage({method: "getLocalStorage"}, function(response) {
-	for (var key in response.localStorage) {
-	  if (response.localStorage.hasOwnProperty(key)) {
-		localStorage[key] = response.localStorage[key];
-	  }
-	}
-});
+(function() {
+  var id;
 
-if (localStorage.thermo == "true") {
-	//stop countdown
-	var id = window.setTimeout(function() {}, 0);
+  chrome.runtime.sendMessage({
+    method: "getLocalStorage"
+  }, function(response) {
+    var key, _i, _len, _ref, _results;
+    _ref = response.localStorage;
+    _results = [];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      key = _ref[_i];
+      if (response.localStorage.hasOwnProperty(key)) {
+        _results.push(localStorage[key] = response.localStorage[key]);
+      }
+    }
+    return _results;
+  });
 
-	while (id--) {
-		window.clearTimeout(id);
-	}
-	//Remove logout timer bar (visual)
-	$('#__thermo').parent().remove();
-}
+  if (localStorage.thermo === "true") {
+    id = window.setTimeout((function() {}), 0);
+    while (id--) {
+      window.clearTimeout(id);
+    }
+    $("#__thermo").parent().remove();
+  }
 
-if (localStorage.logo == "true") {
-	//make logo go to my.nuevaschool.org
-	$('#mastLeft').children(':first').attr('href', 'https://my.nuevaschool.org/');
-}
+  if (localStorage.logo === "true") {
+    $("#mastLeft").children(":first").attr("href", "https://my.nuevaschool.org/");
+  }
 
-//Add footer text
-$('#footer').children(":first").css('width', 'auto').html(' &nbsp; &nbsp;New-eva extension by Yoni Lerner');
+  $("#footer").children(":first").css("width", "auto").html(" &nbsp; &nbsp;New-eva extension by Yoni Lerner");
 
+  $(".errorMessage").remove();
 
-//Kill browser warning
-$('.errorMessage').remove();
+}).call(this);

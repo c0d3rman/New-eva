@@ -67,13 +67,6 @@ this.manifest = {
 			"label": "No school days"
 		},
 		{
-			"tab": "Appearance",
-			"group": "Sidebox",
-			"name": "sidebox",
-			"type": "checkbox",
-			"label": "Enable homework sidebox (not recommended)"
-		},
-		{
 			"tab": "Log-Out Prevention",
 			"group": "Thermo Bar",
 			"type": "description",

@@ -1,6 +1,6 @@
 {
 	"name": "New-eva",
-	"version": "3.4.0",
+	"version": "4.0.0",
 	"manifest_version": 2,
 	"description": "New-eva improves the Nueva website, stopping annoying login timeouts and prettyfing pages.",
 	"author": "Yoni Lerner",
@@ -30,7 +30,6 @@
 			"js/jquery/jquery.min.js",
 			"src/content_script/global.js",
 			"src/content_script/homeworkcalendar.js",
-			"src/content_script/sidebox.js",
 			"src/content_script/bgrvisual.js"
 		],
 		"matches": [
