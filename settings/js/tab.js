@@ -2,6 +2,7 @@
 // Copyright (c) 2011 Frank Kohlhepp
 // https://github.com/frankkohlhepp/fancy-settings
 // License: LGPL v2.1
+// Adapted for New-eva Extension by Yoni Lerner
 //
 (function () {
     var Bundle = new Class({

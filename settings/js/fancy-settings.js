@@ -2,6 +2,7 @@
 // Copyright (c) 2011 Frank Kohlhepp
 // https://github.com/frankkohlhepp/fancy-settings
 // License: LGPL v2.1
+// Adapted for New-eva Extension by Yoni Lerner
 //
 (function () {
     var FancySettings = this.FancySettings = new Class({
@@ -12,9 +13,9 @@
             $("title").set("text", name);
             $("favicon").set("href", icon);
             $("icon").set("src", icon);
-            $("settings-label").set("text", (i18n.get("settings") || "Settings"));
-            $("search-label").set("text", (i18n.get("search") || "Search"));
-            $("search").set("placeholder", (i18n.get("search") || "Search") + "...");
+            $("settings-label").set("text", "Settings");
+            $("search-label").set("text", "Search");
+            $("search").set("placeholder", "Search...");
             
             this.tab = new Tab($("tab-container"), $("content"));
             this.search = new Search($("search"), $("search-result-container"));

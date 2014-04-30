@@ -1,7 +1,6 @@
-// SAMPLE
 this.manifest = {
 	"name": "New-eva",
-	"icon": chrome.extension.getURL("icons/icon128.png"),
+	"icon": chrome.extension.getURL("images/icons/icon128.png"),
 	"settings": [
 		{
 			"tab": "Appearance",
@@ -113,12 +112,4 @@ this.manifest = {
 			}
 		}
 	],
-	/*"alignment": [
-		[
-			"calendarSaturday",
-			"calendarSunday",
-			"calendarToday",
-			"calendarNoSchool"
-		]
-	]*/
 };

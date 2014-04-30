@@ -2,6 +2,7 @@
 // Copyright (c) 2011 Frank Kohlhepp
 // https://github.com/frankkohlhepp/fancy-settings
 // License: LGPL v2.1
+// Adapted for New-eva Extension by Yoni Lerner
 //
 (function () {
     this.Search = new Class({
@@ -20,7 +21,7 @@
             setting = new Setting(this.searchResultContainer);
             this.nothingFound = setting.create({
                 "type": "description",
-                "text": (i18n.get("nothing-found") || "No matches were found.")
+                "text": "No matches were found."
             });
             this.nothingFound.bundle.set("id", "nothing-found");
             
