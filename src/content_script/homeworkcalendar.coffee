@@ -23,7 +23,7 @@ if $(".subNavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 			"Science of Mind Liquid": "Science of Mind"
 			"Spanish Inca": "Spanish"
 			"Spanish Azteca": "Spanish"
-			"For class \"9th Psychology 2013-2014.2\".": "Psychology"
+			"Psychology": "Psychology"
 			#educated guesses
 			"DT Solid": "Design Thinking"
 			"DT Gas": "Design Thinking"
