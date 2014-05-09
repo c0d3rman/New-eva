@@ -16,6 +16,3 @@ $("#mastLeft").children(":first").attr "href", "https://my.nuevaschool.org/" if 
 
 #Add footer text
 $("#footer").children(":first").css("width", "auto").html " &nbsp; &nbsp;New-eva extension by Yoni Lerner"
-
-#Kill browser warning
-$(".errorMessage").remove()

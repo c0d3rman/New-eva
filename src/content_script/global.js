@@ -30,6 +30,4 @@
 
   $("#footer").children(":first").css("width", "auto").html(" &nbsp; &nbsp;New-eva extension by Yoni Lerner");
 
-  $(".errorMessage").remove();
-
 }).call(this);
