@@ -47,7 +47,9 @@
     bgrtime: 30,
     thermo: true,
     logo: true,
-    hw_due: true
+    hw_due: true,
+    hw_remind: false,
+    hw_post: false
   });
 
   chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {

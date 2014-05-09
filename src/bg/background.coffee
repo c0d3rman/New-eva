@@ -43,8 +43,8 @@ settings = new Store("settings",
 	thermo: true
 	logo: true
 	hw_due: true
-#	hw_remind: false
-#	hw_post: false
+	hw_remind: false
+	hw_post: false
 )
 chrome.extension.onMessage.addListener (request, sender, sendResponse) ->
 	if request.method is "getLocalStorage"
