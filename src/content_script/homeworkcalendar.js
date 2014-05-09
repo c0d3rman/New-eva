@@ -23,7 +23,6 @@
         "For class \"9th Science of Mind Plasma 2013-2014.1\".": "Science of Mind",
         "For class \"9th Science of Mind Liquid 2013-2014.1\".": "Science of Mind",
         "For class \"9th Spanish Inca 2013-2014.1\".": "Spanish",
-        "For class \"9th Spanish Azteca 2013-2014.1\".": "Spanish",
         "For class \"9th Psychology 2013-2014.2\".": "Psychology",
         "For class \"9th DT Solid 2013-2014.1\".": "Design Thinking",
         "For class \"9th DT Gas 2013-2014.1\".": "Design Thinking",
@@ -49,7 +48,8 @@
       };
       titlehasher = function(string) {
         string = string.replace(/\d{4}-\d{4}\.\d/, "2013-2014.1");
-        return titlehash[string];
+        string = string.replace(/\dth/, "9th");
+        return titlehash[string] || string.replace(/^For class "9th (.+) 2013-2014\.1"\.$/, "$1");
       };
       hw_due = $(".hw_due,.hw_remind,.hw_post");
       hw_due.children("em").remove();

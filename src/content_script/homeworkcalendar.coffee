@@ -23,7 +23,7 @@ if $(".subNavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 			"For class \"9th Science of Mind Plasma 2013-2014.1\".": "Science of Mind"
 			"For class \"9th Science of Mind Liquid 2013-2014.1\".": "Science of Mind"
 			"For class \"9th Spanish Inca 2013-2014.1\".": "Spanish"
-			"For class \"9th Spanish Azteca 2013-2014.1\".": "Spanish"
+			#"For class \"9th Spanish Azteca 2013-2014.1\".": "Spanish"
 			"For class \"9th Psychology 2013-2014.2\".": "Psychology"
 			#educated guesses
 			"For class \"9th DT Solid 2013-2014.1\".": "Design Thinking"
@@ -51,7 +51,8 @@ if $(".subNavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 		#Function to resolve 2013-2014.1 or 2012-2013.2 issue
 		titlehasher = (string) ->
 			string = string.replace /\d{4}-\d{4}\.\d/, "2013-2014.1"
-			titlehash[string]
+			string = string.replace /\dth/, "9th"
+			(titlehash[string] || string.replace /^For class "9th (.+) 2013-2014\.1"\.$/, "$1")
 
 		
 		#Deal with assignments
