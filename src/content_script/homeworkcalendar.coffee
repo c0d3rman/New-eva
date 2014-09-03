@@ -49,9 +49,14 @@ if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 			"Comp Sci - Computing in Everything": "Programming"
 			"Spanish Maya": "Spanish"
 		
-		#Function to resolve 2013-2014.1 or 2012-2013.2 issue
+		#Function to parse and resolve human class names
 		titlehasher = (string) ->
-			string = string.replace /^For class "\d{1,2}th (.+) Section \w \d{4}-\d{2}\.\d"\.$/, "$1"
+			string = string
+				.replace(/^For class "(.+)"\.$/, "$1")
+				.replace(/^\d{1,2}th\/\d{1,2}th (.+)$/, "$1")
+				.replace(/^\d{1,2}th (.+)$/, "$1")
+				.replace(/^(.+) \d{4}-\d{2}\.\d$/, "$1")
+				.replace(/^(.+) Section \w$/, "$1")
 			(titlehash[string] || string)
 
 		

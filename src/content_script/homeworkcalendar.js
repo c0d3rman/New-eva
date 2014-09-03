@@ -49,7 +49,7 @@
         "Spanish Maya": "Spanish"
       };
       titlehasher = function(string) {
-        string = string.replace(/^For class "\d{1,2}th (.+) Section \w \d{4}-\d{2}\.\d"\.$/, "$1");
+        string = string.replace(/^For class "(.+)"\.$/, "$1").replace(/^\d{1,2}th\/\d{1,2}th (.+)$/, "$1").replace(/^\d{1,2}th (.+)$/, "$1").replace(/^(.+) \d{4}-\d{2}\.\d$/, "$1").replace(/^(.+) Section \w$/, "$1");
         return titlehash[string] || string;
       };
       hw_due = $(".hw_due,.hw_remind,.hw_post");
