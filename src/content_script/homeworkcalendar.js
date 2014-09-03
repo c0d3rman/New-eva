@@ -24,6 +24,8 @@
         "Spanish Inca": "Spanish",
         "Spanish Azteca": "Spanish",
         "Psychology": "Psychology",
+        "Interdisciplinary Studies of Science": "ISS",
+        "History: Big History 1": "History",
         "DT Solid": "Design Thinking",
         "DT Gas": "Design Thinking",
         "DT Plasma": "Design Thinking",

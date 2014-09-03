@@ -24,6 +24,8 @@ if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 			"Spanish Inca": "Spanish"
 			"Spanish Azteca": "Spanish"
 			"Psychology": "Psychology"
+			"Interdisciplinary Studies of Science": "ISS"
+			"History: Big History 1": "History"
 			#educated guesses
 			"DT Solid": "Design Thinking"
 			"DT Gas": "Design Thinking"
