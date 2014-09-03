@@ -4,14 +4,12 @@
   chrome.runtime.sendMessage({
     method: "getLocalStorage"
   }, function(response) {
-    var key, _i, _len, _ref, _results;
+    var key, value, _ref, _results;
     _ref = response.localStorage;
     _results = [];
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      key = _ref[_i];
-      if (response.localStorage.hasOwnProperty(key)) {
-        _results.push(localStorage[key] = response.localStorage[key]);
-      }
+    for (key in _ref) {
+      value = _ref[key];
+      _results.push(localStorage[key] = value);
     }
     return _results;
   });

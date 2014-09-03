@@ -1,4 +1,4 @@
-if $(".subNavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.calendar is "true" and $(".subNavTitle:contains(Calendar)").length isnt 0)
+if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.calendar is "true" and $(".subnavTitle:contains(Calendar)").length isnt 0)
 	#Apply unicorn powder to assignments
 	if localStorage.hw_due is "true"	
 		#Create hash of title-text -> class name

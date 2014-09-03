@@ -1,7 +1,7 @@
 (function() {
   var hw_due, img, titlehash, titlehasher;
 
-  if ($(".subNavTitle:contains(Homework Calendar)").length !== 0 || (localStorage.calendar === "true" && $(".subNavTitle:contains(Calendar)").length !== 0)) {
+  if ($(".subnavTitle:contains(Homework Calendar)").length !== 0 || (localStorage.calendar === "true" && $(".subnavTitle:contains(Calendar)").length !== 0)) {
     if (localStorage.hw_due === "true") {
       titlehash = {
         "Comp Sci - Elegant Logic": "Programming",

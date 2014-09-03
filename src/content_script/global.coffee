@@ -1,7 +1,7 @@
 #fetch settings and dump them into localStorage
 chrome.runtime.sendMessage
 	method: "getLocalStorage", (response) ->
-		localStorage[key] = response.localStorage[key] for key in response.localStorage when response.localStorage.hasOwnProperty(key)
+		localStorage[key] = value for key, value of response.localStorage
 
 if localStorage.thermo is "true"
 	#stop countdown
