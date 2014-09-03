@@ -60,13 +60,13 @@
         var comment, title;
         comment = /\s+Comment: (.*)$/.exec($(this).children(":first").attr("title"));
         title = titlehasher($(this).children(":first").attr("title").replace(/\s+Comment: .*$/, ""));
+        $(this).children(":first").html("<span style=\"color: red\">" + title + "</span>: \n" + ($(this).children(":first").html() || "&lt;untitled&gt;"));
         if (comment) {
           comment = comment[1];
           $(this).children(":first").attr("title", $(this));
-          $(this).children(":first").html("<span style=\"color: red\">" + title + "</span>: \n" + ($(this).children(":first").html()) + "\n<span style=\"color: green\"> Comment: " + comment + " </span>");
+          return $(this).children(":first").html("" + ($(this).children(":first").html()) + "\n<span style=\"color: green\"> Comment: " + comment + "</span>");
         } else {
-          $(this).children(":first").attr("title", title);
-          $(this).children(":first").html("<span style=\"color: red\">" + title + "</span>: " + $(this).children(":first").html());
+          return $(this).children(":first").attr("title", title);
         }
       });
       $(".hw_remind").css("background-color", "rgba(255,255,0,0.2)");

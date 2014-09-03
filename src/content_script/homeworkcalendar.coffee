@@ -63,19 +63,21 @@ if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 		hw_due.each ->
 			comment = /\s+Comment: (.*)$/.exec $(this).children(":first").attr "title"
 			title = titlehasher $(this).children(":first").attr("title").replace /\s+Comment: .*$/, "" #Save title-text for reference (children(":first") problems), hash lookup for performance
+			#Set assignment text
+			$(this).children(":first").html """
+				<span style="color: red">#{title}</span>: 
+				#{$(this).children(":first").html() || "&lt;untitled&gt;"}
+			"""
 			if comment
 				comment = comment[1]
 				$(this).children(":first").attr "title", $(this) #Set title-text to comment
-				 #Add attr('class') & comment
+				#Add comment
 				$(this).children(":first").html """
-					<span style="color: red">#{title}</span>: 
 					#{$(this).children(":first").html()}
-					<span style="color: green"> Comment: #{comment} </span>
+					<span style="color: green"> Comment: #{comment}</span>
 				"""
 			else
 				$(this).children(":first").attr "title", title #Set title-text to attr('class')
-				$(this).children(":first").html "<span style=\"color: red\">" + title + "</span>: " + $(this).children(":first").html() #Add attr('class')
-			return
 
 		$(".hw_remind").css "background-color", "rgba(255,255,0,0.2)"
 		$(".hw_post").css "background-color", "rgba(0,255,0,0.2)"
