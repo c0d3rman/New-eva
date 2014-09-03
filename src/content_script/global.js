@@ -19,13 +19,15 @@
     while (id--) {
       window.clearTimeout(id);
     }
-    $("#__thermo").parent().remove();
+    $("#__thermo").remove();
   }
 
   if (localStorage.logo === "true") {
     $("#mastLeft").children(":first").attr("href", "https://my.nuevaschool.org/");
   }
 
-  $("#footer").children(":first").css("width", "auto").html(" &nbsp; &nbsp;New-eva extension by Yoni Lerner");
+  $(".footer small").html(function(i, html) {
+    return "" + html + "<br>New-eva extension by Yoni Lerner";
+  });
 
 }).call(this);

@@ -9,10 +9,10 @@ if localStorage.thermo is "true"
 	window.clearTimeout id while id--
 	
 	#Remove logout timer bar (visual)
-	$("#__thermo").parent().remove()
+	$("#__thermo").remove()
 
 #make logo go to my.nuevaschool.org
 $("#mastLeft").children(":first").attr "href", "https://my.nuevaschool.org/" if localStorage.logo is "true"
 
 #Add footer text
-$("#footer").children(":first").css("width", "auto").html " &nbsp; &nbsp;New-eva extension by Yoni Lerner"
+$(".footer small").html (i, html) -> "#{html}<br>New-eva extension by Yoni Lerner"
