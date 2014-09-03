@@ -49,7 +49,7 @@ if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 		
 		#Function to resolve 2013-2014.1 or 2012-2013.2 issue
 		titlehasher = (string) ->
-			string = string.replace /^For class "\dth (.+) \d{4}-\d{4}\.\d"\.$/, "$1"
+			string = string.replace /^For class "\d{1,2}th (.+) Section \w \d{4}-\d{2}\.\d"\.$/, "$1"
 			(titlehash[string] || string)
 
 		
