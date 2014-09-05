@@ -11,13 +11,24 @@
 		font-weight: bold;
 		text-align: right;
 	}
+	#settings {
+		float: right;
+		width: 30px;
+		opacity: 1;
+	}
+	#settings:hover {
+		opacity: 0.5;
+	}
 	h1 {
 		font-size: 2em;
 	}
 </style>
 
 <div id="mainPopup">
-<h1>Hello!</h1>
-<p>Thanks for using New-eva!</p><br>
-<div id="author">-Yoni Lerner, the Almighty Developer</div>
+	<a target="_blank" href="chrome-extension://mlljbjnfegmdgmkgbpeehpaknghiabfn/settings/index.html">
+		<img src="/images/settings.png" id="settings">
+	</a>
+	<h1>Hello!</h1>
+	<p>Thanks for using New-eva!</p><br>
+	<div id="author">-Yoni Lerner, the Almighty Developer</div>
 </div>
