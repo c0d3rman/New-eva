@@ -4,6 +4,7 @@ if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 		#Create human class name hash
 		titlehash =
 			"Elective: Advanced Physics": "Physics"
+			"Elective: Computer Programming Workshop": "Programming"
 			"History: Big History 1": "History"
 			"Interdisciplinary Studies of Science": "ISS"
 			"Math Calculus": "Math"
