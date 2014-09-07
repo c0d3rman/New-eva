@@ -3,8 +3,8 @@ if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 	if localStorage.hw_due is "true"	
 		#Create human class name hash
 		titlehash =
-			"Elective: Advanced Physics": "Physics"
-			"Elective: Computer Programming Workshop": "Programming"
+			"Advanced Physics": "Physics"
+			"Computer Programming Workshop": "Programming"
 			"History: Big History 1": "History"
 			"Interdisciplinary Studies of Science": "ISS"
 			"Math Calculus": "Math"
@@ -53,12 +53,13 @@ if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 		
 		#Function to parse and resolve human class names
 		titlehasher = (string) ->
-			string = string
-				.replace(/^For class "(.+)"\.$/, "$1")
-				.replace(/^\d{1,2}th\/\d{1,2}th (.+)$/, "$1")
-				.replace(/^\d{1,2}th (.+)$/, "$1")
-				.replace(/^(.+) \d{4}-\d{2}\.\d$/, "$1")
-				.replace(/^(.+) Section \w$/, "$1")
+			string = string										#For class "9th/10th Elective: Physics Section A 2014-15.2".
+				.replace(/^For class "(.+)"\.$/, "$1")			#9th/10th Elective: Physics Section A 2014-15.2
+				.replace(/^\d{1,2}th\/\d{1,2}th (.+)$/, "$1")	#Elective: Physics Section A 2014-15.2
+				.replace(/^\d{1,2}th (.+)$/, "$1")				#Elective: Physics Section A 2014-15.2
+				.replace(/^(.+) \d{4}-\d{2}\.\d$/, "$1")		#Elective: Physics Section A
+				.replace(/^(.+) Section \w$/, "$1")				#Elective: Physics
+				.replace(/^Elective: (.+)$/, "$1")				#Physics
 			(titlehash[string] || string)
 
 		

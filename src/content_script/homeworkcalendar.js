@@ -4,7 +4,8 @@
   if ($(".subnavTitle:contains(Homework Calendar)").length !== 0 || (localStorage.calendar === "true" && $(".subnavTitle:contains(Calendar)").length !== 0)) {
     if (localStorage.hw_due === "true") {
       titlehash = {
-        "Elective: Advanced Physics": "Physics",
+        "Advanced Physics": "Physics",
+        "Computer Programming Workshop": "Programming",
         "History: Big History 1": "History",
         "Interdisciplinary Studies of Science": "ISS",
         "Math Calculus": "Math",
@@ -51,7 +52,7 @@
         "Spanish Maya": "Spanish"
       };
       titlehasher = function(string) {
-        string = string.replace(/^For class "(.+)"\.$/, "$1").replace(/^\d{1,2}th\/\d{1,2}th (.+)$/, "$1").replace(/^\d{1,2}th (.+)$/, "$1").replace(/^(.+) \d{4}-\d{2}\.\d$/, "$1").replace(/^(.+) Section \w$/, "$1");
+        string = string.replace(/^For class "(.+)"\.$/, "$1").replace(/^\d{1,2}th\/\d{1,2}th (.+)$/, "$1").replace(/^\d{1,2}th (.+)$/, "$1").replace(/^(.+) \d{4}-\d{2}\.\d$/, "$1").replace(/^(.+) Section \w$/, "$1").replace(/^Elective: (.+)$/, "$1");
         return titlehash[string] || string;
       };
       hw_due = $(".hw_due,.hw_remind,.hw_post");
