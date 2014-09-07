@@ -8,6 +8,7 @@ if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 			"History: Big History 1": "History"
 			"Interdisciplinary Studies of Science": "ISS"
 			"Math Calculus": "Math"
+			"Quest": "Quest"
 			#deprecated (2013-2014)
 			"Comp Sci - Computer Science and Programming": "Programming"
 			"Comp Sci - Computing in Everything": "Programming"
@@ -55,9 +56,12 @@ if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.
 		titlehasher = (string) ->
 			string = string										#For class "9th/10th Elective: Physics Section A 2014-15.2".
 				.replace(/^For class "(.+)"\.$/, "$1")			#9th/10th Elective: Physics Section A 2014-15.2
+				.replace(/^For BLOG (.+)\.$/, "$1")
 				.replace(/^\d{1,2}th\/\d{1,2}th (.+)$/, "$1")	#Elective: Physics Section A 2014-15.2
-				.replace(/^\d{1,2}th (.+)$/, "$1")				#Elective: Physics Section A 2014-15.2
-				.replace(/^(.+) \d{4}-\d{2}\.\d$/, "$1")		#Elective: Physics Section A
+				.replace(/^\d{1,2}th Grade (.+)$/, "$1")
+				.replace(/^\d{1,2}th (.+)$/, "$1")				
+				.replace(/^(.+) \d{4}-\d{2}(\.\d)?$/, "$1")		#Elective: Physics Section A
+				.replace(/^(.+) \d{4}-\d{4}(\.\d)?$/, "$1")
 				.replace(/^(.+) Section \w$/, "$1")				#Elective: Physics
 				.replace(/^Elective: (.+)$/, "$1")				#Physics
 			(titlehash[string] || string)
