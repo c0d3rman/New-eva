@@ -49,7 +49,9 @@
     logo: true,
     hw_due: true,
     hw_remind: false,
-    hw_post: false
+    hw_post: false,
+    tabname: true,
+    titlename: true
   });
 
   chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {

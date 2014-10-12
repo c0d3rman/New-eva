@@ -25,6 +25,26 @@ this.manifest = {
 		},
 		{
 			"tab": "Assignments",
+			"group": "Assignment Pages",
+			"type": "description",
+			"text": "These settings affect pages of individual assignments (and blogs.)"
+		},
+		{
+			"tab": "Assignments",
+			"group": "Assignment Pages",
+			"name": "tabname",
+			"type": "checkbox",
+			"label": "Change tab name to human friendly title"
+		},
+		{
+			"tab": "Assignments",
+			"group": "Assignment Pages",
+			"name": "titlename",
+			"type": "checkbox",
+			"label": "Change page title to human friendly title"
+		},
+		{
+			"tab": "Assignments",
 			"group": "Other Assignments",
 			"name": "hw_remind",
 			"type": "checkbox",
@@ -37,6 +57,7 @@ this.manifest = {
 			"type": "checkbox",
 			"label": "Show homework postings (green)"
 		},
+		
 		{
 			"tab": "Appearance",
 			"group": "Pictures",

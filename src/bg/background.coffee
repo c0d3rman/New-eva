@@ -45,6 +45,8 @@ settings = new Store("settings",
 	hw_due: true
 	hw_remind: false
 	hw_post: false
+	tabname: true
+	titlename: true
 )
 chrome.extension.onMessage.addListener (request, sender, sendResponse) ->
 	if request.method is "getLocalStorage"
