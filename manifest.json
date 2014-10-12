@@ -1,6 +1,6 @@
 {
 	"name": "New-eva",
-	"version": "4.2.0",
+	"version": "4.2.1",
 	"manifest_version": 2,
 	"description": "New-eva improves the Nueva website, stopping annoying login timeouts and prettyfing pages.",
 	"author": "Yoni Lerner",
@@ -36,7 +36,12 @@
     		"http://my.nuevaschool.org/*"
 		]
 	}],
-	"web_accessible_resources" : ["lib/*", "images/*.png", "/images/loading.gif"],
+	"web_accessible_resources": [
+		"lib/*",
+		"images/*.png",
+		"images/loading.gif",
+		"settings/index.html"
+	],
 	"permissions": [
 		"https://my.nuevaschool.org/*",
 		"http://my.nuevaschool.org/*",
