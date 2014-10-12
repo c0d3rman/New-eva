@@ -1,5 +1,3 @@
-#Settings dispenser
-
 # show Page Action	
 checkForValidUrl = (tabId, changeInfo, tab) ->
 	chrome.pageAction.show tabId if tab.url.indexOf("my.nuevaschool.org") is 7 or tab.url.indexOf("my.nuevaschool.org") is 8
