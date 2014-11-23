@@ -90,7 +90,7 @@ window.onNewevaReady ->
 		$("#__thermo").remove()
 
 	#make logo go to my.nuevaschool.org
-	$("#mastLeft").children(":first").attr "href", "https://my.nuevaschool.org/" if localStorage.logo is "true"
+	$(".col-md-2").children().first().attr "href", "https://my.nuevaschool.org/" if localStorage.logo is "true"
 
 	#Add footer text
 	$(".footer small").html (i, html) -> "#{html}<br>New-eva extension by Yoni Lerner"

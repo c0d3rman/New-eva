@@ -84,7 +84,7 @@
       $("#__thermo").remove();
     }
     if (localStorage.logo === "true") {
-      $("#mastLeft").children(":first").attr("href", "https://my.nuevaschool.org/");
+      $(".col-md-2").children().first().attr("href", "https://my.nuevaschool.org/");
     }
     return $(".footer small").html(function(i, html) {
       return "" + html + "<br>New-eva extension by Yoni Lerner";
