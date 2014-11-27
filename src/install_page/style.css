@@ -1,0 +1,48 @@
+#container {
+	width: 95%;
+	height: 95%;
+	background-color: #F5DEB3;
+	border-radius: 10px;
+	/* center horizontically and vertically */
+	position: relative;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#content {
+	/* nested div to avoid padding expanding the outer div */
+	padding: 5%;
+}
+
+#titlewrapper {
+	text-align: center;
+}
+
+#title {
+	background-color: #F4A460;
+	border-radius: 10px;
+	padding: 1%;
+	display: inline-block;
+}
+
+#titletext {
+	display: inline;
+}
+
+#logo {
+	display: inline;
+	width: 30px;
+	vertical-align: center;
+}
+
+#textwrapper {
+	width: 60%;
+	margin: 0 auto;
+}
+
+h2,h3 {
+	text-align: center;
+}

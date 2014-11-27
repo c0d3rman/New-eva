@@ -1,6 +1,14 @@
 (function() {
   var checkForValidUrl, messageAllTabs, settings, stayLoggedIn;
 
+  chrome.runtime.onInstalled.addListener(function(details) {
+    if (details.reason === "install") {
+      return chrome.tabs.create({
+        url: "src/install_page/install.html"
+      });
+    }
+  });
+
   checkForValidUrl = function(tabId, changeInfo, tab) {
     if (tab.url.indexOf("my.nuevaschool.org") === 7 || tab.url.indexOf("my.nuevaschool.org") === 8) {
       return chrome.pageAction.show(tabId);
