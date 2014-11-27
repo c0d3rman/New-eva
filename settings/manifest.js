@@ -131,6 +131,12 @@ this.manifest = {
 				chrome.alarms.create("Background Refresh", {"delayInMinutes": 1, "periodInMinutes": value});
 				return value + " minutes";
 			}
-		}
+		},
+		{
+			"tab": "Other",
+			"group": "Resources",
+			"type": "description",
+			"text": "If you would like to revisit the new install page, click <a href=\"/src/install_page/install.html\">here</a>."
+		},
 	],
 };
