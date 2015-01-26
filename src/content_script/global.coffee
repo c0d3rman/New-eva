@@ -9,8 +9,10 @@ chrome.runtime.sendMessage method: "getLocalStorage", (response) ->
 #create and expose function to parse and resolve human class names
 window.titlehash =
 	"Advanced Physics": "Physics"
+	"Advanced Physics II": "Physics"
 	"Computer Programming Workshop": "Programming"
 	"History: Big History 1": "History"
+	"History: Big History 2": "History"
 	"Interdisciplinary Studies of Science": "ISS"
 	"Math Calculus": "Math"
 	"Quest": "Quest"
