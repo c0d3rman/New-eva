@@ -1,5 +1,5 @@
 window.onNewevaReady ->
-	if $(".subnavTitle:contains(Homework Calendar)").length isnt 0 or (localStorage.calendar is "true" and $(".subnavTitle:contains(Calendar)").length isnt 0)
+	if $('.breadcrumb li b:contains("Homework Calendar")').length isnt 0 or (localStorage.calendar is "true" and $(".subnavTitle:contains(Calendar)").length isnt 0)
 		#Apply unicorn powder to assignments
 		if localStorage.hw_due is "true"
 			#Deal with assignments
