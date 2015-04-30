@@ -2,6 +2,11 @@
   window.onNewevaReady(function() {
     var hw_due, img;
     if ($('.breadcrumb li b:contains("Homework Calendar")').length !== 0 || (localStorage.calendar === "true" && $(".subnavTitle:contains(Calendar)").length !== 0)) {
+      if (localStorage.mark_other_month_days === "true") {
+        $("td.calendarDay,td.calendarNoSchool").filter(function() {
+          return $(this).children().length === 0;
+        }).css("background-color", "#AAAAAA");
+      }
       if (localStorage.hw_due === "true") {
         hw_due = $(".hw_due,.hw_remind,.hw_post");
         hw_due.children("em").remove();

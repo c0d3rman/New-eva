@@ -87,6 +87,13 @@ this.manifest = {
 			"label": "No school days"
 		},
 		{
+			"tab": "Appearance",
+			"group": "Other",
+			"name": "mark_other_month_days",
+			"type": "checkbox",
+			"label": "Mark days that aren't actually in this month on the homework calendar.\nThose days don't load assignments and so are confusing."
+		},
+		{
 			"tab": "Log-Out Prevention",
 			"group": "Thermo Bar",
 			"type": "description",

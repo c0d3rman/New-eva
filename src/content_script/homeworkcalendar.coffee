@@ -1,5 +1,11 @@
 window.onNewevaReady ->
 	if $('.breadcrumb li b:contains("Homework Calendar")').length isnt 0 or (localStorage.calendar is "true" and $(".subnavTitle:contains(Calendar)").length isnt 0)
+		#Mark days that aren't in this month
+		if localStorage.mark_other_month_days is "true"
+			$("td.calendarDay,td.calendarNoSchool").filter( ->
+				$(this).children().length is 0
+			).css "background-color", "#AAAAAA"
+
 		#Apply unicorn powder to assignments
 		if localStorage.hw_due is "true"
 			#Deal with assignments
